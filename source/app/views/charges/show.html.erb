@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @charge.amount %>
+</p>
+
+<p>
+  <strong>Unique code:</strong>
+  <%= @charge.unique_code %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @charge.paid %>
+</p>
+
+<p>
+  <strong>Refunded:</strong>
+  <%= @charge.refunded %>
+</p>
+
+<p>
+  <strong>Owner type:</strong>
+  <%= @charge.owner_type %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @charge.owner_id %>
+</p>
+
+<%= link_to 'Edit', edit_charge_path(@charge) %> |
+<%= link_to 'Back', charges_path %>
