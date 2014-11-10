@@ -20,8 +20,8 @@
         <td><%= charge.unique_code %></td>
         <td><%= charge.paid %></td>
         <td><%= charge.refunded %></td>
-        <td><%= charge.owner_type %></td>
-        <td><%= charge.owner_id %></td>
+        <td><%= charge.customer_type %></td>
+        <td><%= charge.customer_id %></td>
         <td><%= link_to 'Show', charge %></td>
         <td><%= link_to 'Edit', edit_charge_path(charge) %></td>
         <td><%= link_to 'Destroy', charge, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -7,8 +7,8 @@ RSpec.describe "charges/new", :type => :view do
       :unique_code => "MyString",
       :paid => false,
       :refunded => false,
-      :owner_type => "MyString",
-      :owner_id => 1
+      :customer_type => "MyString",
+      :customer_id => 1
     ))
   end
 
@@ -25,9 +25,9 @@ RSpec.describe "charges/new", :type => :view do
 
       assert_select "input#charge_refunded[name=?]", "charge[refunded]"
 
-      assert_select "input#charge_owner_type[name=?]", "charge[owner_type]"
+      assert_select "input#charge_customer_type[name=?]", "charge[customer_type]"
 
-      assert_select "input#charge_owner_id[name=?]", "charge[owner_id]"
+      assert_select "input#charge_customer_id[name=?]", "charge[customer_id]"
     end
   end
 end

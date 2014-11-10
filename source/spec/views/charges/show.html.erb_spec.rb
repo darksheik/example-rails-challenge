@@ -7,8 +7,8 @@ RSpec.describe "charges/show", :type => :view do
       :unique_code => "Unique Code",
       :paid => false,
       :refunded => false,
-      :owner_type => "Owner Type",
-      :owner_id => 1
+      :customer_type => "Owner Type",
+      :customer_id => 1
     ))
   end
 
