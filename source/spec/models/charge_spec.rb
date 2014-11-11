@@ -26,4 +26,13 @@ RSpec.describe Charge, :type => :model do
       end
     end
   end
+
+  context "setting of unique code" do
+    before {
+      Charge.create!
+    }
+    it "should have a randomly generated code" do
+      expect(Charge.last.unique_code).to be_truthy
+    end
+  end
 end

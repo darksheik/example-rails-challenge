@@ -12,24 +12,11 @@ RSpec.describe ChargesController, :type => :routing do
     end
 
     it "routes to #show" do
-      expect(:get => "/charges/1").to route_to("charges#show", :id => "1")
-    end
-
-    it "routes to #edit" do
-      expect(:get => "/charges/1/edit").to route_to("charges#edit", :id => "1")
+      expect(:get => "/charges/sdfjkdf").to route_to("charges#show", :unique_code => "sdfjkdf")
     end
 
     it "routes to #create" do
       expect(:post => "/charges").to route_to("charges#create")
     end
-
-    it "routes to #update" do
-      expect(:put => "/charges/1").to route_to("charges#update", :id => "1")
-    end
-
-    it "routes to #destroy" do
-      expect(:delete => "/charges/1").to route_to("charges#destroy", :id => "1")
-    end
-
   end
 end
