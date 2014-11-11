@@ -4,17 +4,22 @@ class ChargesController < ApplicationController
   # GET /charges
   # GET /charges.json
   def index
-    @charges = Charge.all
+    @failed = Charge.failed
+    @disputed = Charge.disputed
+    @successful = Charge.successful
   end
 
   # GET /charges/1
   # GET /charges/1.json
   def show
+    @customer = @charge.customer
   end
 
   # GET /charges/new
   def new
     @charge = Charge.new
+    @users = User.all
+    @companies = Company.all
   end
 
   # GET /charges/1/edit
@@ -24,11 +29,16 @@ class ChargesController < ApplicationController
   # POST /charges
   # POST /charges.json
   def create
-    @charge = Charge.new(charge_params)
+    customer_type, customer_id = charge_params[:customer].split('-')
+    remaining = charge_params.except(:customer)
+    remaining[:customer_type] = customer_type
+    remaining[:customer_id] = customer_id
+    @charge = Charge.new(remaining)
 
+    # Generate unique code
     respond_to do |format|
       if @charge.save
-        format.html { redirect_to @charge, notice: 'Charge was successfully created.' }
+        format.html { redirect_to @charge.unique_code_url, notice: 'Charge was successfully created.' }
         format.json { render :show, status: :created, location: @charge }
       else
         format.html { render :new }
@@ -42,7 +52,7 @@ class ChargesController < ApplicationController
   def update
     respond_to do |format|
       if @charge.update(charge_params)
-        format.html { redirect_to @charge, notice: 'Charge was successfully updated.' }
+        format.html { redirect_to @charge.unique_code_url, notice: 'Charge was successfully updated.' }
         format.json { render :show, status: :ok, location: @charge }
       else
         format.html { render :edit }
@@ -64,11 +74,11 @@ class ChargesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_charge
-      @charge = Charge.find(params[:id])
+      @charge = Charge.find_by_unique_code(params[:unique_code])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def charge_params
-      params.require(:charge).permit(:amount, :unique_code, :paid, :refunded, :charge_type, :charge_id)
+      params.require(:charge).permit(:amount, :unique_code, :paid, :refunded, :customer)
     end
 end
