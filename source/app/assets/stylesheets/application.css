@@ -12,4 +12,20 @@
  *
  *= require_tree .
  *= require_self
+ //= require charges
  */
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 1px solid black;
+  padding: 1px;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+
