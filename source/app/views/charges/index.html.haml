@@ -1,0 +1,14 @@
+%h1 Failed charges
+%table.failed
+  = render :partial => "table", :locals => { :collection => @failed }
+
+%h1 Disputed charges
+%table.disputed
+  = render :partial => "table", :locals => { :collection => @disputed }
+
+%h1 Successful charges
+%table.successful
+  = render :partial => "table", :locals => { :collection => @successful }
+
+
+= link_to 'New Charge', new_charge_path

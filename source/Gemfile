@@ -31,6 +31,9 @@ group :development, :test do
 end
 
 gem 'shoulda'
+gem 'haml'
+gem 'rails-observers'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

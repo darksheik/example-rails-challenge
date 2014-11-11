@@ -1,0 +1,14 @@
+%thead
+  %tr
+    %th Customer
+    %th Amount
+    %th Date
+    %th Unique Code
+
+- if collection.any?
+  - collection.each do |item|
+    %tr
+      %td= item.customer.display_name
+      %td= item.amount
+      %td= item.created_at
+      %td= link_to item.unique_code, item.unique_code_url

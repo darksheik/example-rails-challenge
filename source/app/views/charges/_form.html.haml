@@ -1,0 +1,26 @@
+= form_for(@charge) do |f|
+  - if @charge.errors.any?
+    .error_explanation
+      %h2
+        = pluralize(@charge.errors.count, "error")
+        prohibited this charge from being saved:
+      %ul
+        - @charge.errors.full_messages.each do |message|
+          %li= message
+
+  .customer
+    = select :charge, :customer, options_for_select(user_map(@users) + companies_map(@companies))
+  .field
+    = f.label :amount
+    = f.text_field :amount
+
+  .paid
+    = f.label :paid
+    = f.check_box :paid
+
+  .refunded
+    = f.label :refunded
+    = f.check_box :refunded
+
+  .actions
+    = f.submit "Charge Customer"

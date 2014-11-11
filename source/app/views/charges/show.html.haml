@@ -1,0 +1,15 @@
+%p.notice= notice
+
+%p
+  %strong Amount:
+  = @charge.amount
+
+%p
+  %strong Unique Code:
+  = @charge.unique_code
+
+%p
+  %strong Customer:
+  = @charge.customer.display_name
+
+= link_to 'Back', charges_path
